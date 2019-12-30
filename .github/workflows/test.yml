@@ -25,11 +25,8 @@ jobs:
 
         include:
           - laravel: '5.5.*'
-            required: true
           - laravel: '5.8.*'
-            required: true
           - laravel: '6.*'
-            required: false
 
     name: 'PHP ${{ matrix.php }} / ${{ matrix.laravel }}'
 
@@ -51,7 +48,7 @@ jobs:
 
       - name: Run tests
         run: php -d pvov.enabled=1 ./vendor/bin/phpunit --coverage-clover=coverage.xml
-        continue-on-error: ${{ matrix.required == false }}
+        continue-on-error: ${{ matrix.php == '7.4' }}
 
       - name: Upload coverage
         run: bash <(curl -s https://codecov.io/bash)
