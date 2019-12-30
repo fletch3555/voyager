@@ -40,9 +40,7 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: '${{ matrix.php }}'
-
-      - name: Install PCov
-        run: pecl install pcov
+          coverage: pcov
 
       - name: Install Composer dependencies
         run: composer require "illuminate/support:${{ matrix.laravel }}"
